@@ -32,10 +32,9 @@ const createChart = (label) => {
   );
 };
 (async function () {
+  // Generate graph for all the counts
   labels.forEach((label) => {
-    if (label !== "index_size" && label !== "table_size") {
-      createChart(label);
-    }
+    createChart(label);
   });
 })();
 
@@ -47,12 +46,12 @@ const createChart = (label) => {
 //             idstat.idx_scan AS index_scans_count,
 //             idstat.idx_tup_read as index_scan_tuple_read,
 //             idstat.idx_tup_fetch as index_scan_tuple_fetch,
-//             pg_size_pretty(pg_relation_size(indexrelid)) AS index_size,
+//             pg_relation_size(indexrelid) AS index_size,
 //             tabstat.idx_scan AS table_reads_index_count,
 //             tabstat.seq_scan AS table_reads_seq_count,
 //             tabstat.seq_scan + tabstat.idx_scan AS table_reads_count,
 //             n_tup_upd + n_tup_ins + n_tup_del AS table_writes_count,
-//             pg_size_pretty(pg_relation_size(idstat.relid)) AS table_size
+//             pg_relation_size(idstat.relid) AS table_size
 //         FROM
 //             pg_stat_user_indexes AS idstat
 //         JOIN
@@ -70,4 +69,4 @@ const createChart = (label) => {
 //         ORDER BY
 //             idstat.idx_scan DESC,
 //             pg_relation_size(indexrelid) DESC
-//     ) q) to '/Users/jitcorn/index.json
+//     ) q) to '/Users/jitcorn/index.json'
